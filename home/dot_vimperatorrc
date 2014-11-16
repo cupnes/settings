@@ -1,0 +1,29 @@
+" mappings
+" ======================================================================
+"j/kの移動量を5倍に
+noremap j 5<C-e>
+noremap k 5<C-y>
+"J/KにPageDown,PageUpを割り当て(LDRizeが効いている場合でも指のポジションを動かさずに済む
+noremap J <PageDown>
+noremap K <PageUp>
+"←/→でタブ移動
+map <Left> <C-p>
+map <Right> <C-n>
+"Shift+←/Shift+→でタブ位置変更
+map <S-Right> :tabmove! +1<CR>
+map <S-Left> :tabmove! -1<CR>
+
+" はてブ
+" https://github.com/hatena/hatena-bookmark-xul/wiki/Vimperator-ではてなブックマーク拡張を使う
+" 予め以下をインストール
+" http://b.hatena.ne.jp/guide/firefox_addon
+javascript if (typeof hBookmark != 'undefined') liberator.loadScript('chrome://hatenabookmark/content/vimperator/plugin/hatenabookmark.js', {__proto__: this});
+
+" タグ付きでURLとタイトルをコピー
+" http://d.hatena.ne.jp/inudaisho/20130413
+nnoremap Ya :js util.copyToClipboard('<a href="'+buffer.URL + '">'+ buffer.title + '</a>')
+nnoremap Yw :js util.copyToClipboard('[['+buffer.title + '>'+ buffer.URL + ']]')
+nnoremap Yt :js util.copyToClipboard(buffer.title)
+nnoremap Yu :js util.copyToClipboard(buffer.URL)
+nnoremap Yb :js util.copyToClipboard(buffer.title + '|' + buffer.URL)
+nnoremap Yh :js util.copyToClipboard('[' + buffer.URL + ':title]')

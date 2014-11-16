@@ -1,0 +1,305 @@
+;======================================================================
+; 言語・文字コード関連の設定
+;======================================================================
+(when (equal emacs-major-version 21) (require 'un-define))
+(set-language-environment "Japanese")
+(set-terminal-coding-system 'utf-8)
+(set-keyboard-coding-system 'utf-8)
+(set-buffer-file-coding-system 'utf-8)
+(setq default-buffer-file-coding-system 'utf-8)
+(prefer-coding-system 'utf-8)				;;UTF-8優先
+(set-default-coding-systems 'utf-8)
+(setq file-name-coding-system 'utf-8)
+
+;; http://stickydiary.blog88.fc2.com/blog-entry-107.html
+;; apt-get install fonts-ipafont
+(set-default-font "IPAGothic:pixelsize=14:spacing=0")
+
+;=======================================================================
+; Misc
+;=======================================================================
+(mouse-wheel-mode)					;;ホイールマウス
+(global-font-lock-mode t)				;;文字の色つけ
+(setq line-number-mode t)				;;カーソルのある行番号を表示
+(auto-compression-mode t)				;;日本語infoの文字化け防止
+(set-scroll-bar-mode 'right)				;;スクロールバーを右に表示
+(global-set-key "\C-h" 'backward-delete-char)		;;Ctrl-Hでバックスペース
+(setq visible-bell nil)					;;ヴィジュアルベル無効
+(setq ring-bell-function '(lambda ()))			;;ビープ音も無効
+(when (boundp 'show-trailing-whitespace) (setq-default show-trailing-whitespace t))	;;行末のスペースを強調表示
+
+;; load-pathの設定
+(add-to-list 'load-path (expand-file-name "~/.emacs.d/"))
+(add-to-list 'load-path (expand-file-name "~/site-lisp"))
+
+;; 対応する括弧を強調表示
+(show-paren-mode t)
+(setq show-paren-style 'mixed)
+;(set-face-background 'show-paren-match-face "gray10")
+(set-face-background 'show-paren-match-face "lawn green")
+(set-face-foreground 'show-paren-match-face "light sea green")
+(set-face-background 'show-paren-mismatch-face "magenta")
+(set-face-foreground 'show-paren-mismatch-face "firebrick")
+
+;; ツールバーを表示しない
+(tool-bar-mode 0)
+
+;; メニューを消したい
+(menu-bar-mode -1)
+
+;; 時計の設定
+(setq display-time-string-forms
+  '((substring year -2) "/" month "/" day " " dayname " " 24-hours ":" minutes))
+(display-time)
+
+;; "Lisp nesting exceeds max-lisp-eval-depth"への対処
+(setq max-lisp-eval-depth 1000)
+
+;; "Variable binding depth exceeds max-specpdl-size"への対処
+(setq max-specpdl-size 1867)
+
+;; バッファの切換えをもっと楽にしたい − iswitchb
+;; (iswitchb-default-keybindings)
+(iswitchb-mode 1)
+
+;; 列数を表示する
+(column-number-mode t)
+
+;; スタートアップ時のメッセージを抑制
+(setq inhibit-startup-message t)
+
+
+
+;; https://github.com/typester/emacs-config/blob/master/conf/init.el
+;; % で対応する括弧に移動
+(defun match-paren (arg)
+  "Go to the matching paren if on a paren; otherwise insert %."
+  (interactive "p")
+  (cond ((looking-at "\\s\(") (forward-list 1) (backward-char 1))
+((looking-at "\\s\)") (forward-char 1) (backward-list 1))
+(t (self-insert-command (or arg 1)))))
+(define-key global-map (kbd "C-5") 'match-paren)
+;; C-t でother-window、分割されてなかったら分割
+(defun other-window-or-split () ; http://d.hatena.ne.jp/rubikitch/20100210/emacs
+  (interactive)
+  (when (one-window-p)
+    (split-window-horizontally))
+  (other-window 1))
+(define-key global-map (kbd "C-t") 'other-window-or-split)
+
+
+
+;; scratchの初期メッセージ消去
+(setq initial-scratch-message "")
+
+;; タイトルバーにファイルのフルパス表示
+(setq frame-title-format
+      (format "%%f - Emacs@%s" (system-name)))
+
+;; ;; 最近使ったファイルをメニューに表示
+;; (recentf-mode t)
+
+;; ;; 最近使ったファイルの表示数
+;; (setq recentf-max-menu-items 10)
+
+;; ;; 最近開いたファイルの保存数を増やす
+;; (setq recentf-max-saved-items 3000)
+
+;; ミニバッファの履歴を保存する
+(savehist-mode 1)
+
+;; ミニバッファの履歴の保存数を増やす
+(setq history-length 3000)
+
+;; デフォルトのタブ幅を半角スペース4つ分に
+(setq default-tab-width 4)
+
+;; c-modeの設定
+(setq c-default-style "linux"
+	c-basic-offset 4)
+;; - http://d.hatena.ne.jp/syohex/20110624/1308871777
+;; 	c-modeの自動インデントをデフォルトで無効化
+;; 	有効/無効はC-c C-lで切り替え
+;; (add-hook 'c-mode-hook
+;; 	'(lambda ()
+;; 		(c-toggle-electric-state -1)))
+
+;; ;; auto-installの設定
+;; (add-to-list 'load-path (expand-file-name "~/.emacs.d/auto-install"))
+;; (require 'auto-install)
+;; (auto-install-update-emacswiki-package-name t)
+;; (auto-install-compatibility-setup)
+;; (setq ediff-window-setup-function 'ediff-setup-windows-plain)
+
+;; ;; cmigemoの設定(Atでは無効化)
+;; ;; http://qiita.com/kenbeese/items/ebbf0128d7c752a94a22
+;; (setq migemo-dictionary "/usr/local/share/migemo/utf-8/migemo-dict")
+;; (setq migemo-command "cmigemo")
+;; (setq migemo-options '("-q" "--emacs"))
+;; (setq migemo-user-dictionary nil)
+;; (setq migemo-coding-system 'utf-8)
+;; (setq migemo-regex-dictionary nil)
+;; (load-library "migemo")
+;; (migemo-init)
+
+;; ;; anything.elの設定
+;; (require 'anything-startup)
+
+;; auto-complete-mode.elの設定
+(require 'auto-complete-config)
+(add-to-list 'ac-dictionary-directories "~/.emacs.d/ac-dict")
+(ac-config-default)
+
+;; GNU GLOBAL(gtags.el)の設定(ここから)
+(autoload 'gtags-mode "gtags" "" t)
+(setq gtags-mode-hook
+	'(lambda ()
+		(local-set-key "\M-t" 'gtags-find-tag)		; 関数の定義元へ
+		(local-set-key "\M-r" 'gtags-find-rtag)		; 関数の参照元へ
+		(local-set-key "\M-s" 'gtags-find-symbol)	; 変数の定義元/参照先へ
+		(local-set-key "\M-f" 'gtags-find-file)		; ファイルにジャンプ
+		(local-set-key "\C-t" 'gtags-pop-stack)))	; 前のバッファに戻る
+;; (add-hook 'gtags-mode-hook
+;;   '(lambda ()
+;;         ; Local customization (overwrite key mapping)
+;;         (define-key gtags-mode-map "\C-f" 'scroll-up)
+;;         (define-key gtags-mode-map "\C-b" 'scroll-down)
+;; ))
+(add-hook 'gtags-select-mode-hook
+	'(lambda ()
+		(setq hl-line-face 'underline)
+		(hl-line-mode 1)))
+(add-hook 'c-mode-hook
+	'(lambda ()
+		(gtags-mode 1)
+		(gtags-make-complete-list)))
+; Customization
+(setq gtags-suggested-key-mapping t)
+(setq gtags-auto-update t)
+;; GNU GLOBAL(gtags.el)の設定(ここまで)
+
+;; ;; Helmの設定
+;; (add-to-list 'load-path "~/site-lisp/helm")
+;; (require 'helm-config)
+;; (helm-mode 1)
+;; ;; 自動補完を無効
+;; (custom-set-variables '(helm-ff-auto-update-initial-value nil))
+;; ;; ミニバッファでC-hをバックスペースに割り当て
+;; ;; (define-key helm-read-file-map (kbd "C-h") 'delete-backward-char)
+;; ;; TABで補完
+;; ;; (define-key helm-read-file-map (kbd "<tab>") 'helm-execute-persistent-action)
+;; ;; For find-file etc.
+;; (define-key helm-read-file-map (kbd "TAB") 'helm-execute-persistent-action)
+;; ;; For helm-find-files etc.
+;; (define-key helm-find-files-map (kbd "TAB") 'helm-execute-persistent-action)
+
+;; view-modeの設定
+(require 'view)
+;; 読み込み専用ファイルを view-mode で開く
+(setq view-read-only t)
+;; view-mode のキー割り当てを変更する
+;; less感覚の操作
+(define-key view-mode-map (kbd "N") 'View-search-last-regexp-backward)
+(define-key view-mode-map (kbd "?") 'View-search-regexp-backward)
+;; vi/w3m感覚の操作
+(define-key view-mode-map (kbd "h") 'backward-char)
+(define-key view-mode-map (kbd "J") 'next-line)
+(define-key view-mode-map (kbd "K") 'previous-line)
+(define-key view-mode-map (kbd "l") 'forward-char)
+(define-key view-mode-map (kbd "j") 'View-scroll-line-forward)
+(define-key view-mode-map (kbd "k") 'View-scroll-line-backward)
+
+;; ;; はてなダイアリーの設定
+;; ;; 依存パッケージをrequire
+;; (add-to-list 'load-path (expand-file-name "~/site-lisp/multi-mode-util"))
+;; (require 'multi-mode-util)
+;; ;; 本体
+;; ;; http://d.hatena.ne.jp/tarao/20130110/1357821338
+;; (require 'hatena-diary)
+;; (require 'hatena-markup-mode)
+;; (setq hatena:d:major-mode 'hatena:markup-mode)
+;; (require 'hatena-multi-mode)
+;; (add-hook 'hatena:markup-mode-hook #'hatena:multi-mode)
+
+;; MELPAを使うための初期設定
+(require 'package)
+(add-to-list 'package-archives '("melpa" . "http://melpa.milkbox.net/packages/") t)
+(add-to-list 'package-archives '("marmalade" . "http://marmalade-repo.org/packages/"))
+(package-initialize)
+
+;; ace-jump-mode
+;; M-x package-install ace-jump-mode
+(autoload
+  'ace-jump-mode
+  "ace-jump-mode"
+  "Emacs quick move minor mode"
+  t)
+;; you can select the key you prefer to
+(define-key global-map (kbd "C-c SPC") 'ace-jump-mode)
+;;
+;; enable a more powerful jump back function from ace jump mode
+;;
+(autoload
+  'ace-jump-mode-pop-mark
+  "ace-jump-mode"
+  "Ace jump back:-)"
+  t)
+(eval-after-load "ace-jump-mode"
+  '(ace-jump-mode-enable-mark-sync))
+(define-key global-map (kbd "C-x SPC") 'ace-jump-mode-pop-mark)
+
+;;====================================
+;;; 折り返し表示ON/OFF
+;;====================================
+(defun toggle-truncate-lines ()
+  "折り返し表示をトグル動作します."
+  (interactive)
+  (if truncate-lines
+      (setq truncate-lines nil)
+    (setq truncate-lines t))
+  (recenter))
+
+(global-set-key (kbd "C-c C-l") 'toggle-truncate-lines) ; 折り返し表示ON/OFF
+;; (global-set-key "\C-c\C-l" 'toggle-truncate-lines) ; 折り返し表示ON/OFF
+
+;; server start for emacs-client
+(require 'server)
+(unless (server-running-p)
+	(server-start))
+
+;; ido-vertical-mode
+;; M-x package-install ido-vertical-mode
+;; https://github.com/gempesaw/ido-vertical-mode.el
+(require 'ido-vertical-mode)
+(ido-mode 1)
+(ido-vertical-mode 1)
+
+;; diff-mode
+;; diffの表示方法を変更
+(defun diff-mode-setup-faces ()
+  ;; 追加された行は緑で表示
+  (set-face-attribute 'diff-added nil
+                      :foreground "white" :background "dark green")
+  ;; 削除された行は赤で表示
+  (set-face-attribute 'diff-removed nil
+                      :foreground "white" :background "dark red")
+  ;; 文字単位での変更箇所は色を反転して強調
+  (set-face-attribute 'diff-refine-change nil
+                      :foreground nil :background nil
+                      :weight 'bold :inverse-video t))
+(add-hook 'diff-mode-hook 'diff-mode-setup-faces)
+;; diffを表示したらすぐに文字単位での強調表示も行う
+(defun diff-mode-refine-automatically ()
+  (diff-auto-refine-mode t))
+(add-hook 'diff-mode-hook 'diff-mode-refine-automatically)
+
+;; magit
+;; M-x list-packages
+;; M-x package-install magit
+;; 参考:
+;; - magit/magit · GitHub
+;;   https://github.com/magit/magit
+;; - EmacsのGitクライアント：Magit - Qiita
+;;   http://qiita.com/takc923/items/c7a11ff30caedc4c5ba7
+;; - magit.elでpush - brainstorm
+;;   http://d.hatena.ne.jp/yuheiomori0718/20091203/1259854346

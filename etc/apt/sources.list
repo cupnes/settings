@@ -1,0 +1,19 @@
+# deb cdrom:[Debian GNU/Linux 7.4.0 _Wheezy_ - Official i386 DVD Binary-1 20140208-12:26]/ wheezy contrib main
+# deb cdrom:[Debian GNU/Linux 7.4.0 _Wheezy_ - Official i386 DVD Binary-1 20140208-12:26]/ wheezy contrib main
+
+deb http://ftp.jp.debian.org/debian/ wheezy main contrib non-free
+deb-src http://ftp.jp.debian.org/debian/ wheezy main contrib non-free
+
+deb http://security.debian.org/ wheezy/updates main contrib non-free
+deb-src http://security.debian.org/ wheezy/updates main contrib non-free
+
+# wheezy-updates, previously known as 'volatile'
+deb http://ftp.jp.debian.org/debian/ wheezy-updates main contrib non-free
+deb-src http://ftp.jp.debian.org/debian/ wheezy-updates main contrib non-free
+
+# http://www.deb-multimedia.org/
+deb http://www.deb-multimedia.org wheezy main non-free
+deb-src http://www.deb-multimedia.org wheezy main non-free
+
+# deb http://ftp.jp.debian.org/debian sid main
+# deb-src http://ftp.jp.debian.org/debian sid main
