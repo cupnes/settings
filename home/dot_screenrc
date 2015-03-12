@@ -69,3 +69,7 @@ hardstatus alwayslastline '%m/%d %02c:%s %{= .g}%H%{-} %L=%-w%45L>%{=u g.}%n %t%
 # http://www.rubyist.net/~rubikitch/computer/screen/
 # 従来のwindowsをWindow Listで置き換える
 bind w windowlist -b
+
+shell zsh
+
+logfile "screen-%Y%m%d-%n.log"
