@@ -27,3 +27,6 @@ nnoremap Yt :js util.copyToClipboard(buffer.title)
 nnoremap Yu :js util.copyToClipboard(buffer.URL)
 nnoremap Yb :js util.copyToClipboard(buffer.title + '|' + buffer.URL)
 nnoremap Yh :js util.copyToClipboard('[' + buffer.URL + ':title]')
+
+" クイックヒントにアルファベット使用
+set hintchars=asdfghjkl
