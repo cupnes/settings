@@ -156,6 +156,7 @@ mytasklist.buttons = awful.util.table.join(
 bat_text = widget({ type = "textbox", align = "right" })
 bat_refresh = function()
     local charge_level = string.gsub(awful.util.pread("acpi -b"), "Battery %d: %u%l+, ", "")
+    charge_level = string.gsub(charge_level, " - will never fully discharge.", "")
     bat_text.text = "B"..charge_level
     return true
 end
