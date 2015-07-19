@@ -16,7 +16,7 @@ map <S-Left> :tabmove! -1<CR>
 " はてブ
 " https://github.com/hatena/hatena-bookmark-xul/wiki/Vimperator-ではてなブックマーク拡張を使う
 " 予め以下をインストール
-" http://b.hatena.ne.jp/guide/firefox_addon
+" https://addons.mozilla.org/ja/firefox/addon/hatena-bookmark/?src=search
 javascript if (typeof hBookmark != 'undefined') liberator.loadScript('chrome://hatenabookmark/content/vimperator/plugin/hatenabookmark.js', {__proto__: this});
 
 " タグ付きでURLとタイトルをコピー
