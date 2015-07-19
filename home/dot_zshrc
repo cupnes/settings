@@ -53,6 +53,8 @@ source $ZSH/oh-my-zsh.sh
 
 export PATH=$HOME/bin:/usr/local/bin:$PATH
 # export MANPATH="/usr/local/man:$MANPATH"
+export PATH=$HOME/.cask/bin:$PATH
+export PATH=$HOME/CodeSourcery/Sourcery_G++_Lite/bin:$PATH
 
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
@@ -104,7 +106,7 @@ alias -g A='| awk'
 alias -s txt='cat'
 alias -s {gif,jpg,jpeg,png,bmp}='eog'
 function runc () {
-    gcc -O2 $1
+    gcc -Wall -Wextra $1
     shift
     ./a.out $@
 }
