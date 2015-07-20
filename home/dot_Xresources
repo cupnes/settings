@@ -1,0 +1,155 @@
+! xterm ----------------------------------------------------------------------
+! https://wiki.archlinux.org/index.php/X_resources#Xterm_resources
+!xterm*VT100.geometry:     80x25
+!xterm*faceName:           Terminus:style=Regular:size=10
+!xterm*font:              -*-dina-medium-r-*-*-16-*-*-*-*-*-*-*
+xterm*dynamicColors:      true
+xterm*utf8:               2
+xterm*eightBitInput:      true
+xterm*saveLines:          512
+xterm*scrollKey:          true
+xterm*scrollTtyOutput:    false
+xterm*scrollBar:          true
+xterm*rightScrollBar:     true
+xterm*jumpScroll:         true
+xterm*multiScroll:        true
+xterm*toolBar:            false
+
+! XTerm*background:   #dfdbc3
+! XTerm*foreground:   #593534
+! XTerm*color0:       #000000
+! XTerm*color1:       #990000
+! XTerm*color2:       #00a600
+! XTerm*color3:       #999900
+! XTerm*color4:       #0000b2
+! XTerm*color5:       #b200b2
+! XTerm*color6:       #00a6b2
+! XTerm*color7:       #bfbfbf
+! XTerm*color8:       #666666
+! XTerm*color9:       #e50000
+! XTerm*color10:      #00d900
+! XTerm*color11:      #e5e500
+! XTerm*color12:      #0000ff
+! XTerm*color13:      #e500e5
+! XTerm*color14:      #00e5e5
+! XTerm*color15:      #e5e5e5
+! XTerm*cursorColor:  #3a2322
+! XTerm*colorBD:      #7f2a19
+! XTerm*colorBDMode:  true
+
+! ! euphrasia v2 by bohoomil
+! ! https://bbs.archlinux.org/viewtopic.php?pid=1386188#p1386188
+! *background: #090C19
+! *foreground: #E6E6E6
+! *cursorColor: #1AAA13
+! *color0: #222946
+! *color8: #8C8B89
+! *color1: #B32323
+! *color9: #DC2C2C
+! *color2: #1AAA13
+! *color10: #5DCE33
+! *color3: #FF9F3E
+! *color11: #E6CB29
+! *color4: #4957F3
+! *color12: #4D79FF
+! *color5: #BF3E94
+! *color13: #B641CC
+! *color6: #09A5B3
+! *color14: #3CB6F3
+! *color7: #AEAEAE
+! *color15: #DBDDE4
+
+! ! -------------------------------------------------
+! ! Author: Cloud
+! ! vim:nu:ai:si:et:ts=4:sw=4:ft=xdefaults:
+! ! -------------------------------------------------
+! ! https://bbs.archlinux.org/viewtopic.php?pid=1385979#p1385979
+! !black
+!  *color0: #443236
+!  *color8: #695F6C
+! !red
+!  *color1: #BE7765
+!  *color9: #D2998B
+! !green
+!  *color2: #96BE65
+!  *color10: #A5C085
+! !yellow
+!  *color3: #FCD384
+!  *color11: #FADEA7
+! !blue
+!  *color4: #9FB5C2
+!  *color12: #CED7D2
+! !magenta
+!  *color5: #9B7E9B
+!  *color13: #B58BB5
+! !cyan
+!  *color6: #76AF92
+!  *color14: #8FC3A9
+! !white
+!  *color7: #F8F5E2
+!  *color15: #D3C2A9
+
+! ! https://bbs.archlinux.org/viewtopic.php?pid=1373715#p1373715
+! ! BLACK
+! *color0:      #434a54
+! *color8:      #656d78
+! ! WHITE
+! *color7:      #e6e9ed
+! *color15:     #f5f7fa
+! ! RED
+! *color1:      #da4453
+! *color9:      #ed5565
+! ! YELLOW
+! *color3:      #f6bb42
+! *color11:     #ffce54
+! ! GREEN
+! *color2:      #8cc152
+! *color10:     #a0d468
+! ! CYAN
+! *color6:      #37bc98
+! *color14:     #48cfad
+! ! BLUE
+! *color4:      #3bafda
+! *color12:     #4fc1e9
+! ! MAGENTA
+! *color5:      #967adc
+! *color13:     #ac92ec
+
+! https://bbs.archlinux.org/viewtopic.php?pid=1295850#p1295850
+! grassland by bohoomil
+*background:  #0d1926
+*foreground:  #d9e6f2
+*cursorColor: #238c0e
+! black
+*color0:  #00070d
+! dark gray
+*color8:  #666666
+! red
+*color1:  #a83a71
+! bright red
+*color9:  #d78bb1
+! green
+*color2:  #71a83a
+! bright green
+*color10: #b1d78b
+! yellow
+*color3:  #a8713a
+! bright yellow
+*color11: #d7b18b
+! blue
+*color4:  #3a71a8
+! bright blue
+*color12: #8bb1d7
+! magenta
+*color5:  #713aa8
+! bright magenta
+*color13: #b18bd7
+! cyan
+*color6:  #3aa871
+! bright cyan
+*color14: #8bd7b1
+! light gray
+*color7:  #a6a6a6
+! white
+*color15: #e6e6e6
+! vim:ft=xdefaults
