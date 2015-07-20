@@ -37,7 +37,9 @@ end
 
 -- {{{ Variable definitions
 -- Themes define colours, icons, and wallpapers
-beautiful.init(awful.util.getdir("config").."/themes/sky/theme.lua")
+-- cd ~/.config/awesome/
+-- git clone https://github.com/mikar/awesome34-themes.git themes
+beautiful.init(awful.util.getdir("config").."/themes/rainbow/theme.lua")
 
 -- This is used later as the default terminal and editor to run.
 terminal = "x-terminal-emulator"
