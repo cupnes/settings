@@ -153,3 +153,6 @@ xterm*toolBar:            false
 ! white
 *color15: #e6e6e6
 ! vim:ft=xdefaults
+
+! http://shimizus.hustle.ne.jp/wiki/wiki.cgi?page=.emacsと.Xresourcesの設定方法
+*pointerColor: #f0f0f0
