@@ -2,11 +2,12 @@
 
 mode=$1
 
-repodir=$(pwd)
+repodir=$(dirname $0)
 
 setup() {
     from=$1
     to=$2
+    echo "setup $from $to"
 
     if [ -f $to ]; then
 	mv $to $to_$(date +%Y%m%d%H%M%S)
@@ -22,4 +23,8 @@ fi
 setup $repodir/home/dot_vimperatorrc ~/.vimperatorrc
 setup $repodir/home/dot_Xmodmap ~/.Xmodmap
 setup $repodir/home/dot_zshrc ~/.zshrc
-setup $repodir/home/dot_oh-my-zsh/themes/robbyrussell_custom.zsh-theme ~/.oh-my-zsh/themes/robbyrussell_custom.zsh-theme
+
+# ~/.oh-my-zsh/oh-my-zsh.sh 110行目で source コマンドの引数として渡しているので、
+# シンボリックリンクではなく実体をコピーする
+echo "cp $repodir/home/dot_oh-my-zsh/themes/robbyrussell_custom.zsh-theme ~/.oh-my-zsh/themes/robbyrussell_custom.zsh-theme"
+cp $repodir/home/dot_oh-my-zsh/themes/robbyrussell_custom.zsh-theme ~/.oh-my-zsh/themes/robbyrussell_custom.zsh-theme
