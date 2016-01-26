@@ -3,6 +3,8 @@
 mode=$1
 
 repodir=$(dirname $0)
+cd $repodir
+repopath=$(pwd)
 
 setup() {
     from=$1
@@ -20,11 +22,11 @@ if [ "$mode" = "full" ]; then
     sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 fi
 
-setup $repodir/home/dot_vimperatorrc ~/.vimperatorrc
-setup $repodir/home/dot_Xmodmap ~/.Xmodmap
-setup $repodir/home/dot_zshrc ~/.zshrc
+setup $repopath/home/dot_vimperatorrc ~/.vimperatorrc
+setup $repopath/home/dot_Xmodmap ~/.Xmodmap
+setup $repopath/home/dot_zshrc ~/.zshrc
 
 # ~/.oh-my-zsh/oh-my-zsh.sh 110行目で source コマンドの引数として渡しているので、
 # シンボリックリンクではなく実体をコピーする
-echo "cp $repodir/home/dot_oh-my-zsh/themes/robbyrussell_custom.zsh-theme ~/.oh-my-zsh/themes/robbyrussell_custom.zsh-theme"
-cp $repodir/home/dot_oh-my-zsh/themes/robbyrussell_custom.zsh-theme ~/.oh-my-zsh/themes/robbyrussell_custom.zsh-theme
+echo "cp $repopath/home/dot_oh-my-zsh/themes/robbyrussell_custom.zsh-theme ~/.oh-my-zsh/themes/robbyrussell_custom.zsh-theme"
+cp $repopath/home/dot_oh-my-zsh/themes/robbyrussell_custom.zsh-theme ~/.oh-my-zsh/themes/robbyrussell_custom.zsh-theme
