@@ -26,7 +26,9 @@ setup $repopath/home/dot_vimperatorrc ~/.vimperatorrc
 setup $repopath/home/dot_Xmodmap ~/.Xmodmap
 setup $repopath/home/dot_zshrc ~/.zshrc
 
-# ~/.oh-my-zsh/oh-my-zsh.sh 110行目で source コマンドの引数として渡しているので、
-# シンボリックリンクではなく実体をコピーする
-echo "cp $repopath/home/dot_oh-my-zsh/custom/robbyrussell.zsh-theme ~/.oh-my-zsh/custom/robbyrussell.zsh-theme"
-cp $repopath/home/dot_oh-my-zsh/custom/robbyrussell.zsh-theme ~/.oh-my-zsh/custom/robbyrussell.zsh-theme
+setup $repopath/home/dot_oh-my-zsh/custom/robbyrussell.zsh-theme ~/.oh-my-zsh/custom/robbyrussell.zsh-theme
+# # 【sourceでシンボリックリンクを解決できない(?)環境用】
+# # ~/.oh-my-zsh/oh-my-zsh.sh 110行目で source コマンドの引数として渡しているので、
+# # シンボリックリンクではなく実体をコピーする
+# echo "cp $repopath/home/dot_oh-my-zsh/custom/robbyrussell.zsh-theme ~/.oh-my-zsh/custom/robbyrussell.zsh-theme"
+# cp $repopath/home/dot_oh-my-zsh/custom/robbyrussell.zsh-theme ~/.oh-my-zsh/custom/robbyrussell.zsh-theme
