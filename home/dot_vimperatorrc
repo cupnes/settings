@@ -32,3 +32,10 @@ nnoremap Yo :js util.copyToClipboard('[[' + buffer.URL + '][' + buffer.title + '
 
 " クイックヒントにアルファベット使用
 set hintchars=asdfghjkl
+
+" 特定サイトでのVimperator無効化設定
+" http://rock-and-hack.blogspot.jp/2013/05/vimperator-ignorekeys.html
+ignorekeys add mail\\.google\\.com -except <C-p>,<C-n>,b,o,:
+ignorekeys add calendar\\.google\\.com -except <C-p>,<C-n>,b,o,:
+ignorekeys add drive\\.google\\.com -except <C-p>,<C-n>,b,o,:
+ignorekeys add docs\\.google\\.com -except <C-p>,<C-n>,b,o,:
