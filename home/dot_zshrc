@@ -113,3 +113,9 @@ function runc () {
     ./a.out $@
 }
 alias -s c='runc'
+
+alias a='apt-get'
+alias ai='apt-get install'
+alias ac='apt-cache'
+alias acs='apt-cache search'
+alias acsn='apt-cache search --names-only'
