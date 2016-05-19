@@ -1,0 +1,13 @@
+[user]
+	name = Namae Myouji
+	email = namae@domain.foo
+[core]
+	editor = emacsclient
+[sendemail]
+	smtpserver = smtp-host-name
+[push]
+	default = current
+[color]
+	ui = auto
+[log]
+	date = iso
