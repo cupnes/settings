@@ -53,7 +53,7 @@ plugins=(git)
 
 # User configuration
 
-export PATH="$HOME/bin:$HOME/.cask/bin:/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games"
+export PATH="$HOME/gcc-linaro-5.3-2016.02-x86_64_aarch64-linux-gnu/bin:$HOME/git/tools/arm-bcm2708/gcc-linaro-arm-linux-gnueabihf-raspbian-x64/bin:$HOME/bin:$HOME/.cask/bin:/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games"
 # export MANPATH="/usr/local/man:$MANPATH"
 
 source $ZSH/oh-my-zsh.sh
