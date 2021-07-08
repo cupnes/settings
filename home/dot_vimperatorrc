@@ -39,3 +39,9 @@ ignorekeys add mail\\.google\\.com -except <C-p>,<C-n>,b,o,:
 ignorekeys add calendar\\.google\\.com -except <C-p>,<C-n>,b,o,:
 ignorekeys add drive\\.google\\.com -except <C-p>,<C-n>,b,o,:
 ignorekeys add docs\\.google\\.com -except <C-p>,<C-n>,b,o,:
+
+" https://mahito.hatenablog.com/entry/20101005/1286290430
+"ビープ音を鳴らさずビジュアルベルを使用
+set visualbell
+"ビジュアルベルを無効化
+"set visualbellstyle=display:none;
